@@ -1,5 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Reflection.Metadata;
+
 
 namespace PerformanceTest
 {
@@ -7,9 +9,9 @@ namespace PerformanceTest
     {
         public static void Main(string[] args)
         {
-            var numberBase = 2.758221;
-            var numberExpoent = 1000000;
-            List<string> operations = new List<string> {"+","-","*","/"};
+            var numberBase = 245.758221;
+            var numberExpoent = 10000;
+            List<string> operations = new List<string> { "+", "-", "*", "/" };
 
             for (int power = 0; power <= numberExpoent; power++)
             {
@@ -17,8 +19,14 @@ namespace PerformanceTest
                 Console.WriteLine($"{numberBase} ^ {power} = {Math.Pow(numberBase, power)}");
                 var sqrtNumber = RandomNumber(1, 2000000);
                 Console.WriteLine($"{result} sqrt = {Math.Sqrt(result)}");
-                RandomCalculations(1,5000000,operations);
+                RandomCalculations(1, 5000000, operations);
                 RandomCalculations(1, 40000000, operations);
+                Console.WriteLine(Math.Sqrt(Math.PI));
+                Random random = new Random();
+                var dec = random.NextDouble();
+                Console.WriteLine($"{dec} ˆ PI = {Math.Pow(dec, Math.PI)}");
+                var dec2 = random.NextDouble();
+                Console.WriteLine($"{dec2} sin = {Math.Sin(dec2)}");
             }
         }
 
